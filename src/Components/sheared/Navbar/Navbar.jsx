@@ -2,7 +2,7 @@ import React from 'react';
 
 const Navbar = () => {
     return (
-      <div className="navbar bg-base-100 shadow-sm">
+      <div className="navbar bg-base-100 ">
         <div className="navbar-start">
           <div className="dropdown">
             <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
@@ -16,48 +16,31 @@ const Navbar = () => {
                 <a>Item 1</a>
               </li>
               <li>
-                <a>Parent</a>
-                <ul className="p-2">
-                  <li>
-                    <a>Submenu 1</a>
-                  </li>
-                  <li>
-                    <a>Submenu 2</a>
-                  </li>
-                </ul>
+                <a>Item 2 </a>
               </li>
               <li>
                 <a>Item 3</a>
               </li>
             </ul>
           </div>
-          <a className="btn btn-ghost text-xl">daisyUI</a>
+          <a className="btn btn-ghost text-xl">Book Vibe</a>
         </div>
-        <div className="navbar-center hidden lg:flex">
-          <ul className="menu menu-horizontal px-1">
+        <div className="navbar-center  hidden lg:flex">
+          <ul className=" items-center  px-1  flex gap-x-20">
             <li>
-              <a>Item 1</a>
+              <a className="btn border border-[#23BE0A] text-[#23BE0A] bg-white">Home</a>
             </li>
             <li>
-              <details>
-                <summary>Parent</summary>
-                <ul className="p-2 bg-base-100 w-40 z-1">
-                  <li>
-                    <a>Submenu 1</a>
-                  </li>
-                  <li>
-                    <a>Submenu 2</a>
-                  </li>
-                </ul>
-              </details>
+              <a>Listed Books</a>
             </li>
             <li>
-              <a>Item 3</a>
+              <a>Pages to Read</a>
             </li>
           </ul>
         </div>
-        <div className="navbar-end">
-          <a className="btn">Button</a>
+        <div className="navbar-end flex gap-4">
+          <a className="btn bg-[#23BE0A] text-white">Sign In</a>
+          <a className="btn bg-[#59C6D2] text-white">Sign Up</a>
         </div>
       </div>
     );
