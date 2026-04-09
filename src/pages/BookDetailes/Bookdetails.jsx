@@ -12,7 +12,7 @@ const Bookdetails = () => {
   
 
   const storeBook = useContext(BookContext);
-  const { handleReadBooks} = storeBook;
+  const { handleReadBooks, handleWishBook} = storeBook;
   
 
   return (
@@ -65,7 +65,9 @@ const Bookdetails = () => {
           <button className="btn btn-outline btn-accent" onClick={() => handleReadBooks(bookData)}>
             Read
           </button>
-          <button className="btn btn-info text-white">Wishlist</button>
+          <button className="btn btn-info text-white" onClick={() => handleWishBook(bookData)}>
+            Wishlist
+          </button>
         </div>
       </div>
     </div>

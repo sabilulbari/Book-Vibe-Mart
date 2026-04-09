@@ -7,7 +7,7 @@ import ListOfRead from "../../Components/sheared/ReadList/ListOfRead";
 
 const Listedbooks = () => {
   const getReadbooks = useContext(BookContext);
-  const { booksRead } = getReadbooks;
+  const { booksRead, wishedBook } = getReadbooks;
   return (
     <div className="w-[90%] mx-auto space-y-8">
       <div className="bg-[#13131316] p-8 mt-2 rounded-xl text-center">
@@ -45,7 +45,7 @@ const Listedbooks = () => {
           )}
         </TabPanel>
         <TabPanel>
-          <h2>Wish list: </h2>
+          <h2>Wishlist: {wishedBook.length} </h2>
         </TabPanel>
       </Tabs>
     </div>
