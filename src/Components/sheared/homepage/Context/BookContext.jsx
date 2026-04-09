@@ -20,6 +20,8 @@ const BookProvider = ({children}) => {
 
       const handleWishBook = (wish)=>{
 
+        
+
         const isExistWish = wishedBook.find((result) => result.bookId === wish.bookId);
         
         if (isExistWish) {

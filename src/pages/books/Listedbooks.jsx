@@ -4,6 +4,7 @@ import { Tab, TabList, TabPanel, Tabs } from "react-tabs";
 import "react-tabs/style/react-tabs.css";
 import { ChevronDown } from "lucide-react";
 import ListOfRead from "../../Components/sheared/ReadList/ListOfRead";
+import WishLeast from "../../Components/sheared/Wish-readlist/WishLeast";
 
 const Listedbooks = () => {
   const getReadbooks = useContext(BookContext);
@@ -46,6 +47,13 @@ const Listedbooks = () => {
         </TabPanel>
         <TabPanel>
           <h2>Wishlist: {wishedBook.length} </h2>
+          {booksRead.length === 0 ? (
+            <div className="bg-base-200 text-[#131313] flex items-center justify-center h-50 rounded-xl">
+              <h1 className="text-center items-center font-bold text-2xl">No Books added to read</h1>
+            </div>
+          ) : (
+            wishedBook.map((wishBook) => <WishLeast key={wishBook.bookId} wishBook={wishBook} />)
+          )}
         </TabPanel>
       </Tabs>
     </div>

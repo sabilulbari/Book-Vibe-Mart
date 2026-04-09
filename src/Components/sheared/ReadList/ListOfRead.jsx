@@ -1,5 +1,4 @@
 import { FileSpreadsheet, MapPin, User } from "lucide-react";
-import React from "react";
 import { Link } from "react-router";
 
 const ListOfRead = ({ bookRead }) => {

@@ -1,55 +1,50 @@
-import React, { useContext } from "react";
-import { BookContext } from "../../Components/sheared/homepage/Context/BookContext";
-import { Tab, TabList, TabPanel, Tabs } from "react-tabs";
-import "react-tabs/style/react-tabs.css";
-import { ChevronDown } from "lucide-react";
-import ListOfRead from "../../Components/sheared/ReadList/ListOfRead";
+import { FileSpreadsheet, MapPin, User } from "lucide-react";
+import { Link } from "react-router";
 
-const Listedbooks = () => {
-  const getReadbooks = useContext(BookContext);
-  const { booksRead } = getReadbooks;
+const WishLeast = ({ wishBook }) => {
+  const { author, bookName, category, image, publisher, rating, bookId, tags, totalPages, yearOfPublishing } = wishBook;
   return (
-    <div className="w-[90%] mx-auto space-y-8">
-      <div className="bg-[#13131316] p-8 mt-2 rounded-xl text-center">
-        <h1 className="font-bold text-[28px]">Books</h1>
+    <div className="card lg:card-side bg-base-100 shadow-sm p-4">
+      <div className="p-5 bg-base-200 rounded-xl flex items-center justify-center">
+        <img className=" max-w-30 rounded-sm " src={image} alt="Album" />
       </div>
-      <div className="flex items-center justify-center">
-        <div className="dropdown dropdown-center ">
-          <div tabIndex={0} role="button" className="btn m-1 bg-[#23BE0A] text-white">
-            Sort by <ChevronDown />
+      <div className="card-body space-y-1 relative">
+        <h2 className="card-title">{bookName}</h2>
+        <p>By : {author}</p>
+        <div className="flex  gap-2">
+          <div className="flex gap-2">
+            <strong>Tag</strong>
+            {tags.map((tag, index) => (
+              <div key={index} className="badge badge-secondary border-none text-[14px] font-medium bg-green-50 text-green-600 ">
+                {tag}
+              </div>
+            ))}
           </div>
-          <ul tabIndex="-1" className="dropdown-content menu bg-base-300 rounded-box z-1 w-52 p-2 shadow-sm">
-            <li className="hover:bg-[#23BE0A] hover:text-white rounded-box">
-              <a>Item 1</a>
-            </li>
-            <li className="hover:bg-[#23BE0A] hover:text-white rounded-box">
-              <a>Item 2</a>
-            </li>
-          </ul>
+          <div className="flex items-center gap-1">
+            <MapPin className="h-4.5" /> Year of publishing: {yearOfPublishing}
+          </div>
+        </div>
+        <div className="flex gap-4">
+          <div className="flex gap-4 items-center">
+            <User /> Publisher: {publisher}
+          </div>
+          <div className="flex gap-4 items-center">
+            <FileSpreadsheet /> Page: {totalPages}
+          </div>
+        </div>
+        <hr />
+        <div className="card-actions">
+          <button className="badge border-none text-[16px] font-medium bg-[#328eff28] text-[#328EFF] text-center items-center p-5 rounded-full ">Category: {category}</button>
+          <button className="badge badge-secondary border-none text-[16px] font-medium bg-[#ffad3326] text-[#FFAC33] text-center p-5 rounded-full items-center">
+            Rating: {rating}
+          </button>
+          <Link to={`/bookDetails/${bookId}`}>
+            <button className="btn bg-[#23BE0A] text-[16px] text-white rounded-full">View Details</button>
+          </Link>
         </div>
       </div>
-      <Tabs>
-        <TabList>
-          <Tab>Readlist</Tab>
-          <Tab>Wishlist</Tab>
-        </TabList>
-
-        <TabPanel>
-          <h2>Read list: {booksRead.length}</h2>
-          {booksRead.length === 0 ? (
-            <div className="bg-base-200 text-[#131313] flex items-center justify-center h-50 rounded-xl">
-              <h1 className="text-center items-center font-bold text-2xl">No Books added to read</h1>
-            </div>
-          ) : (
-            booksRead.map((bookRead) => <ListOfRead key={bookRead.bookId} bookRead={bookRead}></ListOfRead>)
-          )}
-        </TabPanel>
-        <TabPanel>
-          <h2>Wish list: </h2>
-        </TabPanel>
-      </Tabs>
     </div>
   );
 };
 
-export default Listedbooks;
+export default WishLeast;
