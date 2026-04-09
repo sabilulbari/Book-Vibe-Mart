@@ -20,7 +20,14 @@ const BookProvider = ({children}) => {
 
       const handleWishBook = (wish)=>{
 
-        
+       const isExistInReadsBook = booksRead.find((result) => result.bookId === wish.bookId);
+
+       if(isExistInReadsBook){
+        toast.error(`"${wish.bookName}" is already added on Readlist`);
+        return
+       }
+
+
 
         const isExistWish = wishedBook.find((result) => result.bookId === wish.bookId);
         

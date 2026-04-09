@@ -49,7 +49,7 @@ const Listedbooks = () => {
           <h2>Wishlist: {wishedBook.length} </h2>
           {booksRead.length === 0 ? (
             <div className="bg-base-200 text-[#131313] flex items-center justify-center h-50 rounded-xl">
-              <h1 className="text-center items-center font-bold text-2xl">No Books added to read</h1>
+              <h1 className="text-center items-center font-bold text-2xl">No Books added on wish list</h1>
             </div>
           ) : (
             wishedBook.map((wishBook) => <WishLeast key={wishBook.bookId} wishBook={wishBook} />)
