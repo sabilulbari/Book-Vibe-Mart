@@ -1,8 +1,11 @@
 import { FileSpreadsheet, MapPin, User } from "lucide-react";
 import { Link } from "react-router";
 
-const ListOfRead = ({ bookRead }) => {
+const ListOfRead = ({ bookRead, sortType }) => {
   const { author, bookName, category, image, publisher, rating, bookId, tags, totalPages, yearOfPublishing } = bookRead;
+
+
+  console.log(sortType);
 
   return (
     <div className="card lg:card-side bg-base-100 shadow-sm p-4">
