@@ -17,17 +17,18 @@ export const router = createBrowserRouter([
         Component: Homepage,
       },
       {
-        path: '/listedBook',
-        Component: Listedbooks
+        path: "/listedBook",
+        Component: Listedbooks,
       },
       {
-        path:'/pageToRead',
-        Component: PageToRead
+        path: "/pageToRead",
+        Component: PageToRead,
+        loader: () => fetch("/booksData.json"),
       },
       {
         path: "/bookDetails/:bookId",
         Component: Bookdetails,
-        loader: () => fetch('/booksData.json')
+        loader: () => fetch("/booksData.json"),
       },
     ],
     errorElement: <ErrorPage />,
