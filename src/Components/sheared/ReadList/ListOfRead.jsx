@@ -4,9 +4,6 @@ import { Link } from "react-router";
 const ListOfRead = ({ bookRead, sortType }) => {
   const { author, bookName, category, image, publisher, rating, bookId, tags, totalPages, yearOfPublishing } = bookRead;
 
-
-  console.log(sortType);
-
   return (
     <div className="card lg:card-side bg-base-100 shadow-sm p-4">
       <div className="p-5 bg-base-200 rounded-xl flex items-center justify-center">
