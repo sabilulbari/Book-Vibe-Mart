@@ -1,4 +1,5 @@
 import React from "react";
+import { useLoaderData } from "react-router";
 import { BarChart, Bar, XAxis, YAxis, CartesianGrid, LabelList, Label, Tooltip } from "recharts";
 
 const colors = ["#0088FE", "#00C49F", "#FFBB28", "#FF8042", "red", "pink", "black"];
@@ -80,12 +81,22 @@ const CustomColorLabel = (props) => {
   return <Label {...props} fill={fill} />;
 };
 
-const pageToRead = () => {
+const PageToRead = () => {
+  const books = useLoaderData();
+  
+  // Transform book data for chart (show only first 4 books)
+  const chartData = books.slice(0, 4).map(book => ({
+    name: book.bookName.length > 20 ? book.bookName.substring(0, 20) + '...' : book.bookName,
+    pages: book.totalPages
+  }));
+
   return (
-    <BarChart
+    <div  >
+    <div className=" bg-base-200 w-[90%] mx-auto p-6 flex justify-center items-center rounded-xl mt-10  ">
+      <BarChart
       style={{ width: "100%", maxWidth: "700px", maxHeight: "70vh", aspectRatio: 1.618 }}
       responsive
-      data={data}
+      data={chartData}
       margin={{
         top: 20,
         right: 0,
@@ -97,12 +108,13 @@ const pageToRead = () => {
       <Tooltip cursor={{ fillOpacity: 0.5 }} />
       <XAxis dataKey="name" />
       <YAxis width="auto" />
-      <Bar dataKey="uv" fill="#8884d8" shape={TriangleBar} activeBar>
+      <Bar dataKey="pages" fill="#8884d8" shape={TriangleBar} activeBar>
         <LabelList content={CustomColorLabel} position="top" />
       </Bar>
-      <RechartsDevtools />
-    </BarChart>
-  );
+      </BarChart>
+    </div>
+    </div>
+    );
 };
 
 export default PageToRead;
