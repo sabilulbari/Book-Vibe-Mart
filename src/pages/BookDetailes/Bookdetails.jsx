@@ -63,10 +63,10 @@ const Bookdetails = () => {
         </div>
         <div className="card-actions justify-end">
           <button className="btn btn-outline btn-accent" onClick={() => handleReadBooks(bookData)}>
-            {bookData?.read ? "Added" : "Add to Readlist"}
+            Add to Readlist
           </button>
           <button className="btn btn-info text-white" onClick={() => handleWishBook(bookData)}>
-            {bookData?.wish ? "Added" : "Add to Wishlist"}
+            Add to Wishlist
           </button>
         </div>
       </div>

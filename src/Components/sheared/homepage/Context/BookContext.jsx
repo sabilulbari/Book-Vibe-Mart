@@ -10,7 +10,14 @@ const BookProvider = ({ children }) => {
 
 
   const handleReadBooks = (read) => {
-    addReadlistToLocalDB(read);
+
+    const isExistWishList = wishedBook.find((wb) => wb.bookId === read.bookId);
+
+    if(isExistWishList){
+      toast.error("This book is already in Wishlist");
+      return;
+    }
+    
     const isExistBook = booksRead.find((result) => result.bookId === read.bookId);
 
     if (isExistBook) {
@@ -18,14 +25,12 @@ const BookProvider = ({ children }) => {
     } else {
       setBooksRead([...booksRead, read]);
       toast.success(`"${read.bookName}" book is added to read list`);
+      addReadlistToLocalDB(read);
     }
   };
 
   const handleWishBook = (wish) => {
-
-    addWishlistToLocalDB(wish);
-
-
+    
     const isExistInReadsBook = booksRead.find((result) => result.bookId === wish.bookId);
 
     if (isExistInReadsBook) {
@@ -37,9 +42,11 @@ const BookProvider = ({ children }) => {
 
     if (isExistWish) {
       toast.error("This book is already in Wish List");
+      return;
     } else {
       setWishedBook([...wishedBook, wish]);
       toast.success(`"${wish.bookName}" book is added to wish list`);
+      addWishlistToLocalDB(wish);
     }
   };
 
